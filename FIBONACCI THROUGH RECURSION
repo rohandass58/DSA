@@ -1,3 +1,4 @@
+#TLE SOLUTION
 class Solution:
     def fib(self, n: int) -> int:
         if n==0:
@@ -6,3 +7,29 @@ class Solution:
             return 1
         else:
             return self.fib(n-1)+self.fib(n-2)
+ Optimised by DP(RECURSION + MEMOISATION)        
+ class Solution:
+    def fib(self, n: int) -> int:
+        def recur(n, dp={}):
+            if n <=1:
+                return n
+            if n in dp:
+                return dp[n]
+            ans = recur(n-1) + recur(n-2)
+            dp[n] = ans
+            return ans
+        return recur(n)
+  
+  
+  OPTIMISED BY DP (TABULATION)
+  class Solution:
+    def fib(self, n: int) -> int:
+        if n==0:
+            return 0
+        dp=[-1]*(n+1)
+        dp[0] = 0
+        dp[1] = 1
+        for i in range(2,n+1):
+            dp[i] = dp[i-1]+dp[i-2]
+        return dp[n]
+
